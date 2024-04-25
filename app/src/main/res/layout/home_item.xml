@@ -30,6 +30,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/homeUserNameTv"
+        style="@style/username_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_4dp"
