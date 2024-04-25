@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">RecipeApp</string>
+    <string name="toolbar_text">Yemek Tarifleri</string>
+    <string name="search">Tarif ara...</string>
+    <string name="title">Tatlı</string>
+    <string name="food_name">Adana Kebap</string>
+    <string name="username">Yusuf Mendeş</string>
 </resources>
