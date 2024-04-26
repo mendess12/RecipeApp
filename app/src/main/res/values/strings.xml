@@ -6,4 +6,8 @@
     <string name="food_name">Adana Kebap</string>
     <string name="username">Yusuf Mendeş</string>
     <string name="favorite">Favorilerim</string>
+    <string name="add_recipe">Tarif Ekle</string>
+    <string name="recipe_title">Tarif ismi</string>
+    <string name="recipe_description">Tarif detayı</string>
+    <string name="share">Paylaş</string>
 </resources>
