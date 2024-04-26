@@ -12,7 +12,9 @@
     <string name="recipe_description">Tarif detayı</string>
     <string name="get_username">Yusuf Mendeş</string>
     <string name="get_email">yusufmendes123@gmail.com</string>
-    <string name="change_password">Şifremi değiştir</string>
+    <string name="change_password">Şifremi Değiştir</string>
     <string name="share">Paylaş</string>
     <string name="share_recipe">Paylaştığım Tarifler</string>
+    <string name="old_password">Eski şifre</string>
+    <string name="new_password">Yeni şifre</string>
 </resources>
