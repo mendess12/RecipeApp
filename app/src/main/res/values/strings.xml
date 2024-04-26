@@ -7,7 +7,12 @@
     <string name="username">Yusuf Mendeş</string>
     <string name="favorite">Favorilerim</string>
     <string name="add_recipe">Tarif Ekle</string>
+    <string name="profile">Profilim</string>
     <string name="recipe_title">Tarif ismi</string>
     <string name="recipe_description">Tarif detayı</string>
+    <string name="get_username">Yusuf Mendeş</string>
+    <string name="get_email">yusufmendes123@gmail.com</string>
+    <string name="change_password">Şifremi değiştir</string>
     <string name="share">Paylaş</string>
+    <string name="share_recipe">Paylaştığım Tarifler</string>
 </resources>
