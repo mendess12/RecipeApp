@@ -18,4 +18,10 @@
     <string name="share_recipe">Paylaştığım Tarifler</string>
     <string name="old_password">Eski şifre</string>
     <string name="new_password">Yeni şifre</string>
+    <string name="name_surname">Ad-Soyad gir</string>
+    <string name="email">Email gir</string>
+    <string name="password">Şifre gir</string>
+    <string name="login">Giriş Yap</string>
+    <string name="register">Kayıt Ol</string>
+    <string name="forgot_password">Şifremi Unuttum</string>
 </resources>
