@@ -3,6 +3,7 @@ package com.yusufmendes.recipeapp.presentation.view.forgotpassword
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import com.yusufmendes.recipeapp.R
 import com.yusufmendes.recipeapp.databinding.FragmentForgotPasswordBinding
 
@@ -15,5 +16,13 @@ class ForgotPasswordFragment : Fragment(R.layout.fragment_forgot_password) {
         binding = FragmentForgotPasswordBinding.bind(view)
 
         binding.forgotPasswordTl.passwordTlTitleTv.setText(R.string.forgot_password)
+
+        binding.forgotPasswordTl.passwordTlBackIv.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
+        binding.forgotPasswordButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 }
