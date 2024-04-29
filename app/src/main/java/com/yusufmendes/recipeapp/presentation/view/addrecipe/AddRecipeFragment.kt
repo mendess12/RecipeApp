@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import com.yusufmendes.recipeapp.R
 import com.yusufmendes.recipeapp.databinding.FragmentAddRecipeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddRecipeFragment : Fragment(R.layout.fragment_add_recipe) {
 
     private lateinit var binding: FragmentAddRecipeBinding

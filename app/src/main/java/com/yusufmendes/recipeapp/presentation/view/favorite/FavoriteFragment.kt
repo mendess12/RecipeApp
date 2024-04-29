@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import com.yusufmendes.recipeapp.R
 import com.yusufmendes.recipeapp.databinding.FragmentFavoriteBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
 
     private lateinit var binding: FragmentFavoriteBinding
