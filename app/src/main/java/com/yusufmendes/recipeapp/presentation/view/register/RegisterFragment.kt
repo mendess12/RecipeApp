@@ -1,13 +1,16 @@
 package com.yusufmendes.recipeapp.presentation.view.register
 
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import com.yusufmendes.recipeapp.R
+import com.yusufmendes.recipeapp.data.model.Users
 import com.yusufmendes.recipeapp.databinding.FragmentRegisterBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -44,15 +47,25 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 ).show()
             }
         }
+        viewModel.saveRegisterLiveData.observe(viewLifecycleOwner) {
+            it?.doOnSuccess {
+                findNavController().popBackStack()
+            }?.doOnFailure {
+                Log.e("save data fail", it.toString())
+            }
+        }
     }
 
     private fun registerButton() {
         val email = binding.registerEmailEt.text.toString().trim()
         val password = binding.registerPasswordEt.text.toString().trim()
         val userName = binding.registerUserNameEt.text.toString().trim()
+        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
+        val user = Users(email, password, userName, uid)
 
         if (isEligibleToRegister(binding, email, password, userName)) {
             viewModel.getRegister(email, password)
+            viewModel.saveRegisterData(user)
         }
     }
 
