@@ -14,4 +14,10 @@ class AuthRepositoryImpl @Inject constructor(
     override suspend fun login(email: String, password: String): AppResult<AuthResult> = attempt {
         firebaseAuth.signInWithEmailAndPassword(email, password).await()
     }
+
+    override suspend fun forgotPassword(email: String): AppResult<Unit> = attempt {
+        firebaseAuth.sendPasswordResetEmail(email).await()
+    }
+
+
 }
