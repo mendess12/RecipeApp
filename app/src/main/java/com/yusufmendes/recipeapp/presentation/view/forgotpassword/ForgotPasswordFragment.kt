@@ -34,6 +34,25 @@ class ForgotPasswordFragment : Fragment(R.layout.fragment_forgot_password) {
         observeLiveData()
     }
 
+    private fun observeLiveData() {
+        viewModel.forgotPasswordLiveData.observe(viewLifecycleOwner) {
+            it?.doOnSuccess {
+                Snackbar.make(
+                    requireView(),
+                    "$email adresine şifre güncelleme bağlantısı gönderilmiştir. Email adresinizi kontrol ediniz.",
+                    Snackbar.LENGTH_SHORT
+                ).show()
+                findNavController().popBackStack()
+            }?.doOnFailure {
+                Snackbar.make(
+                    requireView(),
+                    "Güncelleme başarısız! Email'i kontrol ediniz.",
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
+        }
+    }
+
     private fun forgotPasswordButton() {
         email = binding.loginEmailEt.text.toString().trim()
 
@@ -57,24 +76,5 @@ class ForgotPasswordFragment : Fragment(R.layout.fragment_forgot_password) {
             return false
         }
         return true
-    }
-
-    private fun observeLiveData() {
-        viewModel.forgotPasswordLiveData.observe(viewLifecycleOwner) {
-            it?.doOnSuccess {
-                Snackbar.make(
-                    requireView(),
-                    "$email adresine şifre güncelleme bağlantısı gönderilmiştir. Email adresinizi kontrol ediniz.",
-                    Snackbar.LENGTH_SHORT
-                ).show()
-                findNavController().popBackStack()
-            }?.doOnFailure {
-                Snackbar.make(
-                    requireView(),
-                    "Güncelleme başarısız! Email'i kontrol ediniz.",
-                    Snackbar.LENGTH_SHORT
-                ).show()
-            }
-        }
     }
 }

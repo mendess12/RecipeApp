@@ -19,5 +19,8 @@ class AuthRepositoryImpl @Inject constructor(
         firebaseAuth.sendPasswordResetEmail(email).await()
     }
 
-
+    override suspend fun register(email: String, password: String): AppResult<AuthResult> =
+        attempt {
+            firebaseAuth.createUserWithEmailAndPassword(email, password).await()
+        }
 }
