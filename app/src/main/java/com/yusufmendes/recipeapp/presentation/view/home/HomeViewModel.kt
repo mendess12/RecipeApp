@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yusufmendes.recipeapp.data.model.Category
 import com.yusufmendes.recipeapp.domain.usecases.home.GetCategoryListUseCases
+import com.yusufmendes.recipeapp.util.AppResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -14,7 +15,7 @@ class HomeViewModel @Inject constructor(
     private val categoryListUseCases: GetCategoryListUseCases
 ) : ViewModel() {
 
-    var categoryLiveData = MutableLiveData<List<Category>>()
+    var categoryLiveData = MutableLiveData<AppResult<List<Category>>>()
 
     fun getCategoryList() = viewModelScope.launch {
         val result = categoryListUseCases.getCategoryList()

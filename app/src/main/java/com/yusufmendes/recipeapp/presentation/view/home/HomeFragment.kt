@@ -32,9 +32,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun observeLiveData() {
         viewModel.categoryLiveData.observe(viewLifecycleOwner) {
-            if (it != null) {
+            it?.doOnSuccess {
                 categoryAdapter.updateCategoryList(it)
-            } else {
+            }?.doOnFailure {
                 Snackbar.make(requireView(), "Categori listesi boş!", Snackbar.LENGTH_SHORT).show()
             }
         }
