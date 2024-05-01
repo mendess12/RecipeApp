@@ -2,8 +2,10 @@ package com.yusufmendes.recipeapp.data.di
 
 import com.yusufmendes.recipeapp.data.repository.AuthRepositoryImpl
 import com.yusufmendes.recipeapp.data.repository.HomeRepositoryImpl
+import com.yusufmendes.recipeapp.data.repository.ProfileRepositoryImpl
 import com.yusufmendes.recipeapp.domain.repos.AuthRepository
 import com.yusufmendes.recipeapp.domain.repos.HomeRepository
+import com.yusufmendes.recipeapp.domain.repos.ProfileRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -22,4 +24,7 @@ abstract class RepositoryBindings {
     @Binds
     abstract fun bindAuthRepository(authRepositoryImpl: AuthRepositoryImpl): AuthRepository
 
+    @Singleton
+    @Binds
+    abstract fun bindProfileRepository(profileRepositoryImpl: ProfileRepositoryImpl): ProfileRepository
 }
