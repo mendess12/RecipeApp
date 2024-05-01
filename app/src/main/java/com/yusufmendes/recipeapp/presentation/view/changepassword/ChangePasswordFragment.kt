@@ -5,9 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.snackbar.Snackbar
 import com.yusufmendes.recipeapp.R
 import com.yusufmendes.recipeapp.databinding.FragmentChangePasswordBinding
+import com.yusufmendes.recipeapp.util.failShowSnackbar
+import com.yusufmendes.recipeapp.util.successShowSnackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,14 +36,10 @@ class ChangePasswordFragment : Fragment(R.layout.fragment_change_password) {
     private fun observeLiveData() {
         viewModel.changePasswordLiveData.observe(viewLifecycleOwner) {
             it?.doOnSuccess {
-                Snackbar.make(requireView(), "Şifreniz değiştirildi.", Snackbar.LENGTH_SHORT).show()
+                view?.successShowSnackbar("Şifreniz değiştirildi.")
                 findNavController().popBackStack()
             }?.doOnFailure {
-                Snackbar.make(
-                    requireView(),
-                    "Şifre değiştirilemedi. Girdiğiniz şifreleri kontrol ediniz!",
-                    Snackbar.LENGTH_SHORT
-                ).show()
+                view?.failShowSnackbar("Şifre değiştirilemedi. Girdiğiniz şifreleri kontrol ediniz!")
             }
         }
     }
@@ -75,11 +72,7 @@ class ChangePasswordFragment : Fragment(R.layout.fragment_change_password) {
         }
 
         if (newPassword == password) {
-            Snackbar.make(
-                requireView(),
-                "Eski şifreniz ve yeni şifreniz aynı. Şifre değiştirmek için yeni şifreniz eski şifrenizden farklı olmalıdır.",
-                Snackbar.LENGTH_SHORT
-            ).show()
+            view?.failShowSnackbar("Eski şifreniz ve yeni şifreniz aynı. Şifre değiştirmek için yeni şifreniz eski şifrenizden farklı olmalıdır.")
             return false
         }
         return true

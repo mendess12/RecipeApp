@@ -6,9 +6,10 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.snackbar.Snackbar
 import com.yusufmendes.recipeapp.R
 import com.yusufmendes.recipeapp.databinding.FragmentLoginBinding
+import com.yusufmendes.recipeapp.util.failShowSnackbar
+import com.yusufmendes.recipeapp.util.successShowSnackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -39,9 +40,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private fun observeLiveData() {
         viewModel.loginLiveData.observe(viewLifecycleOwner) {
             it?.doOnSuccess {
+                view?.successShowSnackbar("Giriş başarılı.")
                 findNavController().navigate(R.id.action_loginFragment_to_nav_graph)
             }?.doOnFailure {
-                Snackbar.make(requireView(), "Giriş başarısız! Email ve şifrenizi kontrol ediniz.", Snackbar.LENGTH_SHORT).show()
+                view?.failShowSnackbar("Giriş başarısız! Email ve şifrenizi kontrol ediniz.")
             }
         }
     }

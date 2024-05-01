@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.google.android.material.snackbar.Snackbar
 import com.yusufmendes.recipeapp.R
 import com.yusufmendes.recipeapp.databinding.FragmentHomeBinding
 import com.yusufmendes.recipeapp.presentation.adapter.CategoryAdapter
+import com.yusufmendes.recipeapp.util.failShowSnackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,7 +35,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             it?.doOnSuccess {
                 categoryAdapter.updateCategoryList(it)
             }?.doOnFailure {
-                Snackbar.make(requireView(), "Categori listesi boş!", Snackbar.LENGTH_SHORT).show()
+                view?.failShowSnackbar("Categori listesi boş!")
             }
         }
     }

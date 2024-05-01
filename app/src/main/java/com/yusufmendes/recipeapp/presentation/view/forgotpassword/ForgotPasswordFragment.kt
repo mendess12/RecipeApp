@@ -6,9 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.snackbar.Snackbar
 import com.yusufmendes.recipeapp.R
 import com.yusufmendes.recipeapp.databinding.FragmentForgotPasswordBinding
+import com.yusufmendes.recipeapp.util.failShowSnackbar
+import com.yusufmendes.recipeapp.util.successShowSnackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,18 +38,10 @@ class ForgotPasswordFragment : Fragment(R.layout.fragment_forgot_password) {
     private fun observeLiveData() {
         viewModel.forgotPasswordLiveData.observe(viewLifecycleOwner) {
             it?.doOnSuccess {
-                Snackbar.make(
-                    requireView(),
-                    "$email adresine şifre güncelleme bağlantısı gönderilmiştir. Email adresinizi kontrol ediniz.",
-                    Snackbar.LENGTH_SHORT
-                ).show()
+                view?.successShowSnackbar("$email adresine şifre güncelleme bağlantısı gönderilmiştir. Email adresinizi kontrol ediniz.")
                 findNavController().popBackStack()
             }?.doOnFailure {
-                Snackbar.make(
-                    requireView(),
-                    "Güncelleme başarısız! Email'i kontrol ediniz.",
-                    Snackbar.LENGTH_SHORT
-                ).show()
+                view?.failShowSnackbar("Güncelleme başarısız! Email'i kontrol ediniz.")
             }
         }
     }

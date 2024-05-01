@@ -7,11 +7,12 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.yusufmendes.recipeapp.R
 import com.yusufmendes.recipeapp.data.model.Users
 import com.yusufmendes.recipeapp.databinding.FragmentRegisterBinding
+import com.yusufmendes.recipeapp.util.failShowSnackbar
+import com.yusufmendes.recipeapp.util.successShowSnackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,14 +38,10 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
     private fun observeLiveData() {
         viewModel.registerLiveData.observe(viewLifecycleOwner) {
             it?.doOnSuccess {
-                Snackbar.make(requireView(), "Kayıt başarılı", Snackbar.LENGTH_SHORT).show()
+                view?.successShowSnackbar("Kayıt başarılı")
                 findNavController().popBackStack()
             }?.doOnFailure {
-                Snackbar.make(
-                    requireView(),
-                    "Kayıt başarısız. Girdiğiniz değerleri kontrol ediniz!",
-                    Snackbar.LENGTH_SHORT
-                ).show()
+                view?.failShowSnackbar("Kayıt başarısız. Girdiğiniz değerleri kontrol ediniz!")
             }
         }
         viewModel.saveRegisterLiveData.observe(viewLifecycleOwner) {
