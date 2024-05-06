@@ -144,7 +144,7 @@ inline fun <T : Any> attempt(f: () -> T): AppResult<T> {
     return try {
         Success(f.invoke())
     } catch (e: Throwable) {
-        Log.e("Attempt", e.localizedMessage)
+        e.localizedMessage?.let { Log.e("Attempt", it) }
         e.printStackTrace()
         Failure(error = e)
     }
